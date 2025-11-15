@@ -21,17 +21,20 @@ A powerful bash script for managing packages and Copr repositories on Fedora Lin
 ## Installation
 
 1. Download the script:
+
 ```bash
-wget https://raw.githubusercontent.com/your-repo/fedora-pkg-manager.sh
+wget https://raw.githubusercontent.com/ijadux2/fedora-pkg/main/fedora-pkg-manager.sh
 # or copy the script content to a local file
 ```
 
 2. Make it executable:
+
 ```bash
 chmod +x fedora-pkg-manager.sh
 ```
 
 3. (Optional) Move to a system directory for global access:
+
 ```bash
 sudo mv fedora-pkg-manager.sh /usr/local/bin/fedora-pkg-manager
 ```
@@ -46,22 +49,23 @@ sudo ./fedora-pkg-manager.sh [OPTIONS]
 
 ### Command Line Options
 
-| Option | Description | Example |
-|--------|-------------|---------|
-| `-p, --packages PKG1,PKG2,...` | Packages to install | `-p git,vim,htop` |
-| `-r, --remove PKG1,PKG2,...` | Packages to remove | `-r old-package,unused-app` |
-| `-c, --copr REPO1,REPO2,...` | Copr repositories to enable | `-c copr.repo/user/project` |
-| `--disable-copr REPO1,REPO2,...` | Copr repositories to disable | `--disable-copr copr.repo/user/project` |
-| `--enable-repo REPO1,REPO2,...` | Regular repositories to enable | `--enable-repo rpmfusion-free` |
-| `--disable-repo REPO1,REPO2,...` | Regular repositories to disable | `--disable-repo testing-repo` |
-| `-u, --update` | Update system before operations | `-u` |
-| `-h, --help` | Show help message | `-h` |
+| Option                           | Description                     | Example                                 |
+| -------------------------------- | ------------------------------- | --------------------------------------- |
+| `-p, --packages PKG1,PKG2,...`   | Packages to install             | `-p git,vim,htop`                       |
+| `-r, --remove PKG1,PKG2,...`     | Packages to remove              | `-r old-package,unused-app`             |
+| `-c, --copr REPO1,REPO2,...`     | Copr repositories to enable     | `-c copr.repo/user/project`             |
+| `--disable-copr REPO1,REPO2,...` | Copr repositories to disable    | `--disable-copr copr.repo/user/project` |
+| `--enable-repo REPO1,REPO2,...`  | Regular repositories to enable  | `--enable-repo rpmfusion-free`          |
+| `--disable-repo REPO1,REPO2,...` | Regular repositories to disable | `--disable-repo testing-repo`           |
+| `-u, --update`                   | Update system before operations | `-u`                                    |
+| `-h, --help`                     | Show help message               | `-h`                                    |
 
 ## Examples
 
 ### Basic Package Installation
 
 Install multiple packages:
+
 ```bash
 sudo ./fedora-pkg-manager.sh -p git,vim,htop,tree
 ```
@@ -69,16 +73,19 @@ sudo ./fedora-pkg-manager.sh -p git,vim,htop,tree
 ### Copr Repository Management
 
 Enable a Copr repository and install packages from it:
+
 ```bash
 sudo ./fedora-pkg-manager.sh -c copr.repo/user/awesome-project -p awesome-app
 ```
 
 Enable multiple Copr repositories:
+
 ```bash
 sudo ./fedora-pkg-manager.sh -c copr.repo/user/project1,copr.repo/user/project2
 ```
 
 Disable a Copr repository:
+
 ```bash
 sudo ./fedora-pkg-manager.sh --disable-copr copr.repo/user/old-project
 ```
@@ -86,11 +93,13 @@ sudo ./fedora-pkg-manager.sh --disable-copr copr.repo/user/old-project
 ### Regular Repository Management
 
 Enable RPM Fusion repositories (common for multimedia):
+
 ```bash
 sudo ./fedora-pkg-manager.sh --enable-repo rpmfusion-free,rpmfusion-nonfree
 ```
 
 Install packages after enabling repositories:
+
 ```bash
 sudo ./fedora-pkg-manager.sh --enable-repo rpmfusion-free -p vlc,handbrake
 ```
@@ -98,6 +107,7 @@ sudo ./fedora-pkg-manager.sh --enable-repo rpmfusion-free -p vlc,handbrake
 ### Package Removal
 
 Remove single or multiple packages:
+
 ```bash
 sudo ./fedora-pkg-manager.sh -r old-software,unused-library
 ```
@@ -105,6 +115,7 @@ sudo ./fedora-pkg-manager.sh -r old-software,unused-library
 ### System Updates
 
 Update system and install packages:
+
 ```bash
 sudo ./fedora-pkg-manager.sh -u -p firefox,libreoffice
 ```
@@ -112,6 +123,7 @@ sudo ./fedora-pkg-manager.sh -u -p firefox,libreoffice
 ### Complex Operations
 
 Combine multiple operations in one command:
+
 ```bash
 sudo ./fedora-pkg-manager.sh \
   -u \
@@ -122,6 +134,7 @@ sudo ./fedora-pkg-manager.sh \
 ```
 
 This command will:
+
 1. Update the system
 2. Enable two Copr repositories
 3. Enable RPM Fusion repository
@@ -194,17 +207,20 @@ The script performs operations in this specific order to ensure dependencies are
 ### Common Issues
 
 1. **Permission Denied**: Always run with `sudo`
+
    ```bash
    sudo ./fedora-pkg-manager.sh [options]
    ```
 
 2. **Copr Repository Not Found**: Verify the Copr repository name
+
    ```bash
    # Correct format
    copr.repo/username/projectname
    ```
 
 3. **Package Not Found**: Check package names and enabled repositories
+
    ```bash
    # Search for packages
    dnf search package-name
@@ -215,6 +231,7 @@ The script performs operations in this specific order to ensure dependencies are
 ### Debug Mode
 
 For debugging, you can run the script with bash debug mode:
+
 ```bash
 sudo bash -x ./fedora-pkg-manager.sh [options]
 ```
@@ -223,6 +240,8 @@ sudo bash -x ./fedora-pkg-manager.sh [options]
 
 Feel free to submit issues, feature requests, or pull requests to improve the script.
 
+Repository: https://github.com/ijadux2/fedora-pkg
+
 ## License
 
 This script is open source and available under the MIT License.
@@ -230,9 +249,11 @@ This script is open source and available under the MIT License.
 ## Changelog
 
 ### v1.0.0
+
 - Initial release
 - Package installation/removal
 - Copr repository management
 - Regular repository management
 - System update functionality
 - Colored output and error handling
+
